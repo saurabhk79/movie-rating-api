@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const ratingSchema = mongoose.Schema({
   rating: {
-    type: mongoose.Types.Decimal128,
+    type: Number,
     required: true,
   },
   review: {
