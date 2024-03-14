@@ -15,12 +15,12 @@ mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => console.log("Connected gracefully!!"))
   .catch((err) => console.error(err));
-  
-app.use(express.json());
-app.use(cors())
 
-app.use("/api/users",authrouter);
-app.use("/api/movies",movierouter);
+app.use(express.json());
+app.use(cors());
+
+app.use("/api/users", authrouter);
+app.use("/api/movies", movierouter);
 
 app.get("/", (req, res) => {
   res.send("Welcome to backend!!");
@@ -29,6 +29,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log("Running on http://localhost:" + PORT);
 });
-
-
-// MONGODB_URI=mongodb+srv://saurabh-from-task-management:task-management@cluster0.zzf0lgm.mongodb.net/taskManager?retryWrites=true&w=majority&appName=Cluster0

@@ -4,6 +4,8 @@ const ratingSchema = mongoose.Schema({
   rating: {
     type: Number,
     required: true,
+    min: 0.5,
+    max: 5.0,
   },
   review: {
     type: String,

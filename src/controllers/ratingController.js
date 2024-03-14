@@ -59,7 +59,11 @@ const deleteReview = async (req, res) => {
 
 const getAverageRating = async (req, res) => {
   try {
+    const movieId = req.params.id;
 
+    const average = await ratingservice.getAverageRating(movieId);
+
+    return res.status(200).json({average})
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

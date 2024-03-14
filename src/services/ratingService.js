@@ -55,4 +55,26 @@ const deleteReview = async (id, reviewId, userId) => {
   }
 };
 
-module.exports = { addReview, getAllReviews, updateReview, deleteReview };
+const getAverageRating = async (movieId) => {
+  try {
+    const doesExists = await Movie.findById(movieId);
+
+    if (!doesExists) throw new Error("Movie does not exists");
+
+    const ratings = await Rating.find({ movieId });
+
+    const ratingsSum = ratings.reduce((acc, curr) => acc + curr.rating, 0);
+
+    return Math.round(ratingsSum / ratings.length);
+  } catch (error) {
+    throw error;
+  }
+};
+
+module.exports = {
+  addReview,
+  getAllReviews,
+  updateReview,
+  deleteReview,
+  getAverageRating,
+};
